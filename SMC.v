@@ -1,7 +1,18 @@
 // Lab 1 : Super MOSFET Caculator (SMC)
-/* In this lab, we simplify Kn = 1 / 3, Vth = 1
+/* In this lab, we want to design a Supper MOSFET Calculator to calculate ID and gm in a short time with given numerous 
+combinations of width, VGS 𝑎𝑛𝑑 𝑉𝐷𝑆. Furthermore, we would like to sort the result. 
+	We simplify Kn = 1 / 3, Vth = 1
 	Don't consider body effect and channel length modulation
-	Function .... 
+	If mode[0] == 1'b1, we want the id value, else we want the gm value.
+ 	If mode[1] == 1'b1, we want the larger three values; otherwise, we want the smaller three values.
+  	For id value: 
+    		output = 3 * n0 + 4 * n1 + 5 * n2 // mode[1] == 1'b1
+       		output = 3 * n3 + 4 * n4 + 5 * n5 // mode[1] == 1'b0
+       		Notice that 𝑛0 is the largest one, and 𝑛5 is the smallest one. 
+	 For gm value: 
+    		output = n0 + n1 + n2 // mode[1] == 1'b1
+       		output = n3 + n4 + n5 // mode[1] == 1'b0
+       		Notice that 𝑛0 is the largest one, and 𝑛5 is the smallest one. 
 */
 	
 module SMC(
