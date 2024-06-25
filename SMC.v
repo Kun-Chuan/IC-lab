@@ -174,6 +174,8 @@ output reg  [9:0] out0, out1, out2, out3, out4, out5;
 integer i, j;
 reg [9:0] temp;
 reg [9:0] array [0:5];
+	
+//Transfer input into array form
 always @(*)begin
 	array[0] = in0;
 	array[1] = in1;
@@ -181,7 +183,7 @@ always @(*)begin
 	array[3] = in3;
 	array[4] = in4;
 	array[5] = in5;
-	    
+//Bubble Sort	    
 for (i = 0; i < 6; i = i + 1) begin
     for (j = 0 ; j < 5; j = j + 1) begin
         if (array[j] < array[j + 1])
@@ -191,7 +193,8 @@ for (i = 0; i < 6; i = i + 1) begin
             array[j + 1] = temp;
     end end
 end end
-    
+
+//Tranfser array back to the output 
 always @(*)begin
 	out0 = array[0];
       out1 = array[1];
