@@ -196,7 +196,7 @@ end end
 
 //Tranfser array back to the output 
 always @(*)begin
-	out0 = array[0];
+      out0 = array[0];
       out1 = array[1];
       out2 = array[2];
       out3 = array[3];
