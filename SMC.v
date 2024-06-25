@@ -1,6 +1,6 @@
 // Lab 1 : Super MOSFET Caculator (SMC)
 /* In this lab, we want to design a Supper MOSFET Calculator to calculate ID and gm in a short time with given numerous 
-combinations of width, VGS 𝑎𝑛𝑑 𝑉𝐷𝑆. Furthermore, we would like to sort the result. 
+   combinations of width, VGS 𝑎𝑛𝑑 𝑉𝐷𝑆. Furthermore, we would like to sort the result. 
 	We simplify Kn = 1 / 3, Vth = 1
 	Don't consider body effect and channel length modulation
 	If mode[0] == 1'b1, we want the id value, else we want the gm value.
