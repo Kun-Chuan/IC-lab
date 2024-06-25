@@ -1,7 +1,4 @@
 # IC-lab
-Integrated Circuit Design Laboratory
-
-
 Here, I have conducted labs for the course 'Integrated Circuit Design Laboratory' at NCTU, which consists of 12 lab assignments.
 Combinational Circuit Design
 
