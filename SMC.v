@@ -168,13 +168,13 @@ module sort (in0, in1, in2, in3, in4, in5,
 	     out0, out1, out2, out3, out4, out5
   	    );
 
-    input  wire [9:0] in0, in1, in2, in3, in4, in5;
-    output reg  [9:0] out0, out1, out2, out3, out4, out5;
+input  wire [9:0] in0, in1, in2, in3, in4, in5;
+output reg  [9:0] out0, out1, out2, out3, out4, out5;
 	
-    integer i, j;
-    reg [9:0] temp;
-    reg [9:0] array [0:5];
-    always @(*)begin
+integer i, j;
+reg [9:0] temp;
+reg [9:0] array [0:5];
+always @(*)begin
 	array[0] = in0;
 	array[1] = in1;
 	array[2] = in2;
@@ -182,23 +182,23 @@ module sort (in0, in1, in2, in3, in4, in5,
 	array[4] = in4;
 	array[5] = in5;
 	    
-    for (i = 0; i < 6; i = i + 1) begin
-    	for (j = 0 ; j < 5; j = j + 1) begin
-          if (array[j] < array[j + 1])
-          begin
+for (i = 0; i < 6; i = i + 1) begin
+    for (j = 0 ; j < 5; j = j + 1) begin
+        if (array[j] < array[j + 1])
+        begin
             temp = array[j];
             array[j] = array[j + 1];
             array[j + 1] = temp;
     end end
-    end end
+end end
     
-    always @(*)begin
-      out0 = array[0];
+always @(*)begin
+	out0 = array[0];
       out1 = array[1];
       out2 = array[2];
       out3 = array[3];
       out4 = array[4];
       out5 = array[5];
-    end
-  endmodule
+end
+endmodule
   
