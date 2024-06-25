@@ -35,6 +35,7 @@ input [2:0] W_3, V_GS_3, V_DS_3;
 input [2:0] W_4, V_GS_4, V_DS_4;
 input [2:0] W_5, V_GS_5, V_DS_5;
 input [1:0] mode;
+	
 output [9:0] out_n;
 
 wire [2:0] w[0:5], Vgs[0:5], Vds[0:5];
@@ -133,7 +134,7 @@ generate
     end
 endgenerate 
 
-//Calaulte the output 
+//Calaulte the output for each data 
 generate 
     for (idx = 0; idx <= 5; idx = idx + 1) begin: block_5
         assign result[idx] = (A[idx] * B[idx] * C[idx]) / 3;
@@ -155,45 +156,49 @@ assign n_1[0] = (mode[1] == 1'b1)? n[0] : n[3];
 assign out0 = (mode[0] == 1'b0)? n_1[0] : (3 * n_1[0]);
 assign out1 = (mode[0] == 1'b0)? n_1[1] : (4 * n_1[1]);
 assign out2 = (mode[0] == 1'b0)? n_1[2] : (5 * n_1[2]);
- 
+
+// Caculate the final output
 assign out_n = out1 + out2 + out0;
 
 endmodule 
 
 
-//Bubble Sort
-module sort (
-  input  wire [9:0] in0, in1, in2, in3, in4, in5,
-  output reg  [9:0] out0, out1, out2, out3, out4, out5
-  );
+//Sub module: Bubble Sort
+module sort (in0, in1, in2, in3, in4, in5,
+	     out0, out1, out2, out3, out4, out5
+  	    );
+
+    input  wire [9:0] in0, in1, in2, in3, in4, in5;
+    output reg  [9:0] out0, out1, out2, out3, out4, out5;
+	
     integer i, j;
     reg [9:0] temp;
     reg [9:0] array [0:5];
-    always @*
-    begin
-		array[0] = in0;
-		array[1] = in1;
-		array[2] = in2;
-		array[3] = in3;
-		array[4] = in4;
-		array[5] = in5;
-  for (i = 0; i < 6; i = i + 1) begin
-  for (j = 0 ; j < 5; j = j + 1) begin
+    always @(*)begin
+	array[0] = in0;
+	array[1] = in1;
+	array[2] = in2;
+	array[3] = in3;
+	array[4] = in4;
+	array[5] = in5;
+	    
+    for (i = 0; i < 6; i = i + 1) begin
+    	for (j = 0 ; j < 5; j = j + 1) begin
           if (array[j] < array[j + 1])
           begin
             temp = array[j];
             array[j] = array[j + 1];
             array[j + 1] = temp;
-  end end
-  end end
-    always @(*)
-    begin
-		out0 = array[0];
+    end end
+    end end
+    
+    always @(*)begin
+      out0 = array[0];
       out1 = array[1];
       out2 = array[2];
       out3 = array[3];
       out4 = array[4];
       out5 = array[5];
-  end
+    end
   endmodule
   
